@@ -65,10 +65,11 @@ Not: Bu fonskiyon, aşağıdaki diğer görevler için de bir callback fonksiyon
 */
 
 function takimSkoru(/*Kodunuzu buraya yazınız*/){
-    /*Kodunuzu buraya yazınız*/
+  const skor = Math.ceil (Math.random() * (25-10)) + 10 - 1;
+  return skor;
 }
 
-
+console.log("takim skoru", takimSkoru())
 
 
 /* Görev 3: macSonucu() 
@@ -86,12 +87,23 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */ 
 
-function macSonucu(/*Kodunuzu buraya yazınız*/){
-  /*Kodunuzu buraya yazınız*/
+function macSonucu(takimSkoruFn, ceyrekSayisi){
+  let evSahibiSkor = 0;
+  let konukTakimSkor = 0;
+
+  for (let i = 0; i < ceyrekSayisi; i++) {
+    evSahibiSkor = evSahibiSkor + takimSkoruFn() ;
+    konukTakimSkor = konukTakimSkor + takimSkoruFn() ;
+  }
+
+  return {
+    EvSahibi: evSahibiSkor,
+    KonukTakim: konukTakimSkor,
+  };
 }
 
 
-
+console.log("mac sonucu :" , macSonucu(takimSkoru, 4))
 
 
 
@@ -109,11 +121,17 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
   */
 
 
-function periyotSkoru(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
+function periyotSkoru(sonucUretenFn) {
+  
+
+  return {
+  "EvSahibi": sonucUretenFn(),
+  "KonukTakim": sonucUretenFn()
+  }
 
 }
 
+console.log("periyot sonucu : " , periyotSkoru(takimSkoru))
 
 /* Zorlayıcı Görev 5: skorTabelasi() 
 Aşağıdaki skorTabelasi() fonksiyonunu kullanarak aşağıdakileri yapınız:
